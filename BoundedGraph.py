@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import csv
 
 isBounded = 0
 zNought = 0
@@ -51,11 +52,21 @@ def createBoundedArray(x,y):
         for i in range(len(x)):
             #Imaginary number issue
             complexNumber = complex(x[i], y[a])
-            z, isBounded = CalculateZn1(0, complexNumber, 0, 100)
-            if isBounded == True:
+            zN, isBounded = CalculateZn1(0, complexNumber, 0, 100)
+            if isBounded == 0:
                 boundedArray.append(complexNumber)
                 boundedReal.append(x[i])
                 boundedImaginary.append(y[a])
+
+                boundedArray = [str(x) for x in boundedArray]
+
+                componentArray = [[boundedReal[i], boundedImaginary[i]] for i in range(len(boundedReal))]
+                
+                # data = boundedArray # [boundedReal, boundedImaginary]
+                #Adding the complex numbers to a csv
+                with open ('BoundComplex.csv', 'w', encoding='utf-8') as file:
+                    writer = csv.writer(file)
+                    writer.writerows(componentArray)
 
         a = a+1
     #print(boundedReal)
@@ -88,3 +99,8 @@ def createGraphMandelbrot(RealComponent, ImaginaryComponent):
 x, y = testNumberGenerator()
 boundedReal, boundedImaginary = createBoundedArray(x,y)
 createGraphMandelbrot(boundedReal, boundedImaginary)
+
+print(len(boundedReal), len(boundedImaginary))
+
+
+#Lower limit -1.19
