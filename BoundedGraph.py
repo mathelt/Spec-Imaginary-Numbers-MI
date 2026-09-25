@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 isBounded = 0
 zNought = 0
 zN = zNought
@@ -20,9 +22,9 @@ def CalculateZn1(zN, c, isBounded, iterations):
         modulus = (Zn1.real**2) + (Zn1.imag**2)
         if modulus > 4:
             isBounded = 1
-        print(i , ", " ,isBounded)
+        #print(i , ", " ,isBounded)
         i = i+1
-    return zN
+    return zN, isBounded
 
 def testNumberGenerator():
     x = []
@@ -43,18 +45,46 @@ def testNumberGenerator():
 def createBoundedArray(x,y):
     a = 0
     boundedArray = []
-    for i in range(len(x)):
-        #Imaginary number issue
-        complexNumber = complex(x[i], y[a])
-        CalculateZn1(0, complexNumber, 0, 100)
-        if isBounded == True:
-            boundedArray.append(complexNumber)
-    #this is not printing more than the [] which makes me think that the complex numbers are not appending themselves
-    print(boundedArray)
+    boundedReal = []
+    boundedImaginary = []
+    for i in range(len(y)):
+        for i in range(len(x)):
+            #Imaginary number issue
+            complexNumber = complex(x[i], y[a])
+            z, isBounded = CalculateZn1(0, complexNumber, 0, 100)
+            if isBounded == True:
+                boundedArray.append(complexNumber)
+                boundedReal.append(x[i])
+                boundedImaginary.append(y[a])
+
+        a = a+1
+    #print(boundedReal)
+    #print(boundedImaginary)
+    #print(boundedArray)
+    return boundedReal, boundedImaginary
+
+
+def createGraphMandelbrot(RealComponent, ImaginaryComponent):
+    # define the coordinates
+    x = RealComponent
+    y = ImaginaryComponent
+
+    #create the graph
+    plt.scatter(x,y)
+
+    #Format the graph
+    plt.title("Mandlebrot Set Graph")
+    plt.xlabel("Real Component")
+    plt.ylabel("Imaginary Component")
+
+    #Display the chart
+    plt.savefig('Mandelbrot Graph')
+    plt.show()
+
 
 #program run
 #print(CalculateZn1(0, c, 0, 20))
 
 x, y = testNumberGenerator()
-
-createBoundedArray(x,y)
+boundedReal, boundedImaginary = createBoundedArray(x,y)
+createGraphMandelbrot(boundedReal, boundedImaginary)
