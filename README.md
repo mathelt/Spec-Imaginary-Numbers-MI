@@ -1,1 +1,12 @@
 # Spec-Imaginary-Numbers-MI
+############################################################################################################################################
+The python scripts which are contained within the alternate files have been used to create graphs and local csv's which are not public. Each of the programs has been made with the purpose of assisting with a mathematical investigation with a focus on real and complex numbers, as such the graph produced are relevant to which complex numbers remain bounded when they are subjected to an iterative process.
+
+############################################################################################################################################
+The first of the programs created is based on the famous mandelbrot set and focuses on the formula z_n+1 = (z_n)^2 + c, where z_0 is equal to zero. In order to test if the numbers remain bounded they are repeatedly iterated through the formula and have the modulus calculated after every interation. If the modulus is calculated to be above a threshold at any stage within the iterative process then the complex number c is not bound and therefore not within the mandelbrot set. The complex numbers which are within the mandelbrot set are then added to a local csv so they can be easily viewed.
+
+############################################################################################################################################
+The second program is very similar however instead of the mandelbrot set the focus will be to create the graph of a julia set with the z_0 value which changes and instead has a fixed c value of 0.355 + 0.355i. The same process will be used to repeated run the comples numbers through the formula z_n+1 = (z_n)^2 + c, and to determine if the modulus exceeds a given threshold. 
+
+############################################################################################################################################
+Please note that these programs are not currently at the final stage of completion and will be refined and altered as neessary to continue to aid with the mathematical investigation and improving the efficiency of the output. In the future a likely addition will be making an additional program which will read from the local csv's to run operations on specficially the complex numbers within the sets to aid with the construction of conjectures

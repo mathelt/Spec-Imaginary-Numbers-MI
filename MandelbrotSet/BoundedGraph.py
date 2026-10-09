@@ -35,11 +35,11 @@ def testNumberGenerator():
     
     while real <= 1:
         x.append(real)
-        real = round((real + 0.01), 5)
+        real = round((real + 0.001), 5)
 
     while imaginary <= 1:
         y.append(imaginary)
-        imaginary = round((imaginary + 0.01), 5)
+        imaginary = round((imaginary + 0.001), 5)
 
     return x, y
 
@@ -81,7 +81,7 @@ def createGraphMandelbrot(RealComponent, ImaginaryComponent):
     y = ImaginaryComponent
 
     #create the graph
-    plt.scatter(x,y)
+    plt.scatter(x,y,s=1)
 
     #Format the graph
     plt.title("Mandlebrot Set Graph")
@@ -103,4 +103,4 @@ createGraphMandelbrot(boundedReal, boundedImaginary)
 print(len(boundedReal), len(boundedImaginary))
 
 
-#Lower limit -1.19
+#Lower limit -1.298
