@@ -46,7 +46,7 @@ def createBoundedArray(x,y,c):
         for i in range(len(x)):
             #Imaginary number issue
             complexNumber = complex(x[i], y[a])
-            zN, isBounded = CalculateZn1(complexNumber, c, 0, 25)
+            zN, isBounded = CalculateZn1(complexNumber, c, 0, 100)
             if isBounded == 0:
                 boundedArray.append(complexNumber)
                 boundedReal.append(x[i])
