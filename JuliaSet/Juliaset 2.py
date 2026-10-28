@@ -3,7 +3,7 @@ import csv
 
 x = []
 y = []
-c = -0.5125 + 0.5213j
+c =  -0.75+0.015j
 
 print(c)
 
@@ -27,7 +27,7 @@ def testNumberGenerator():
     real = -2
     imaginary = -1.5
     
-    while real <= 1:
+    while real <= 1.5:
         x.append(real)
         real = round((real + 0.01), 5)
 
@@ -89,7 +89,7 @@ def createGraphJulia(RealComponent, ImaginaryComponent):
 
 
 x, y = testNumberGenerator()
-boundedReal, boundedImaginary = createBoundedArray(x,y, -0.5125+0.5213j)
+boundedReal, boundedImaginary = createBoundedArray(x,y,  -0.75+0.015j)
 createGraphJulia(boundedReal, boundedImaginary)
 
 print(len(boundedReal), len(boundedImaginary))

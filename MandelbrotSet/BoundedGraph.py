@@ -30,16 +30,16 @@ def CalculateZn1(zN, c, isBounded, iterations):
 def testNumberGenerator():
     x = []
     y = []
-    real = -2
-    imaginary = -1.5
+    real = -2.1
+    imaginary = 0
     
-    while real <= 1:
+    while real <= -1.98:
         x.append(real)
-        real = round((real + 0.001), 5)
+        real = round((real + 0.00001), 5)
 
-    while imaginary <= 1:
+    while imaginary <= 0:
         y.append(imaginary)
-        imaginary = round((imaginary + 0.001), 5)
+        imaginary = round((imaginary + 0.00001), 5)
 
     return x, y
 
